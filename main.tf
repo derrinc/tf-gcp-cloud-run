@@ -65,7 +65,7 @@ resource "google_cloud_run_service" "services" {
         "run.googleapis.com/client-name" = "terraform"
       }
     }
-    
+
     spec {
       service_account_name = each.value.service_account_name
       container_concurrency = lookup(each.value, "container_concurrency", 80)

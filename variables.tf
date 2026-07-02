@@ -43,11 +43,13 @@ variable "shared_artifact_registry_project" {
 variable "dns_project_id" {
   description = "The GCP Project ID where the DNS zone exists (shared project)"
   type        = string
+  default     = ""
 }
 
 variable "dns_zone_name" {
   description = "The name of the DNS zone in the shared project"
   type        = string
+  default     = ""
 }
 
 variable "environment_secrets" {

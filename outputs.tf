@@ -8,7 +8,7 @@ output "service_names" {
 output "service_urls" {
   description = "Map of service keys to service URLs"
   value       = {
-    for k, v in google_cloud_run_service.services : k => v.status[0].url
+    for k, v in google_cloud_run_service.services : k => try(v.status[0].url, null)
   }
 }
 
@@ -22,6 +22,6 @@ output "service_ids" {
 output "domain_mapping_records" {
   description = "Map of service keys to domain mapping records"
   value       = {
-    for k, v in google_cloud_run_domain_mapping.domain_mapping : k => v.status[0].resource_records
+    for k, v in google_cloud_run_domain_mapping.domain_mapping : k => try(v.status[0].resource_records, [])
   }
 } 
